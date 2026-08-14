@@ -14,9 +14,11 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({
+app.use(
+  cors({
     origin: "http://localhost:5173"
-}));
+  })
+);
 
 app.use(express.json());
 
@@ -27,6 +29,6 @@ app.use("/api/ai", aiRoutes);
 
 connectDB();
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
